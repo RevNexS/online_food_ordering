@@ -17,4 +17,3 @@ web                 -(django project folder)
 |_customers         -(customer app)
 |_src               -(django first app)
 manage.py           -(entry point for django run script)
-
