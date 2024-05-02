@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import HttpRequest
-from customers.models import CustomerUser
+from customers.models import CustomerUser , Address
 from django.contrib.auth import authenticate
 from django.contrib import messages
 
@@ -24,16 +24,39 @@ def user_login(request: HttpRequest):
 
 def user_signup(request: HttpRequest):
     if request.method == 'POST':
-        f_name = ''
-        l_name = ""
-        email = ''
-        password = ''
-        phone_number = ''
-        street = ''
-        city = ''
-        pincode = ''
-        
-        print()
+        f_name = request.POST['first-name']
+        l_name = request.POST['last-name']
+        email = request.POST['email']
+        password = request.POST['password']
+        phone_number = request.POST['password']
+        street = request.POST['street']
+        city = request.POST['city']
+        pincode = request.POST['pin-code']
+
+        users = CustomerUser.objects.filter(email=email)
+        if len(users) > 0 :
+            messages.error(request, 'User exist')
+            return render(request, 'customers/signup/customer_registration.html')
+
+        user = CustomerUser.objects.create_user(
+            first_name = f_name,
+            last_name = l_name,
+            email = email,
+            password = password,
+            phone = phone_number
+        )
+        user.save()
+
+        address = Address.objects.create(
+            street_address = street,
+            city = city,
+            pincode = pincode,
+            customer_id = user
+        )
+
+        messages.success(request , 'Account Created. Login')
+        # return render(request , 'accounts/user_login_page.html')
+        return redirect('user_login')
     else:
         return render(request , 'customers/signup/customer_registration.html')
     

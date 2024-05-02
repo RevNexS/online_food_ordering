@@ -19,10 +19,11 @@ from django.http import HttpRequest
 class Address(models.Model):
     street_address = models.CharField(max_length=200)
     city = models.CharField(max_length=100)
-    postal_code = models.CharField(max_length=100)
+    pincode = models.CharField(max_length=100)
+    customer_id = models.ForeignKey("CustomerUser",on_delete=models.CASCADE , blank=True , null=True)
 
     def __str__(self):
-        return f"{self.street_address}, {self.city},{self.postal_code}"
+        return f"{self.street_address}, {self.city},{self.pincode}"
 
 
 class CustomerUserManager(BaseUserManager):
@@ -74,7 +75,8 @@ class CustomerUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-    
+
+# FIXME [] Email is not unique. two user can have same email.    
 
 class CustomerUserBackend(ModelBackend):
     def authenticate(self, request, email=None, password=None, **kwargs):
