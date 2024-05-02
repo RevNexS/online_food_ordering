@@ -122,7 +122,8 @@
 <body>
     <div class="wrapper">
         <h1>Customer Register</h1>
-        <form id="registrationForm" onsubmit="return validateForm()">
+        <form id="registrationForm" action='' method="POST" onsubmit="return validateForm()">
+            {% csrf_token %}
             <div class="section">
                 <div class="input-box">
                     <label for="first-name">First Name:</label>

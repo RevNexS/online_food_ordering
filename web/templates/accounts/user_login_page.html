@@ -124,7 +124,24 @@
 <body>
     <div class="wrapper">
         <h1>User Login</h1>
-        <form id="registrationForm" onsubmit="return validateForm()">
+        {% if messages %}
+        {% for message in messages %}
+
+        {% if message.tags == "error" %}
+            <div class="alert alert-danger" role="alert" id="{{message.tags}}">
+                {{ message }}
+            </div>
+        {% elif message.tags == 'success' %}
+        <div class="alert alert-success" role="alert" id='success'>
+            {{ message }}
+        </div>
+        {% endif %}
+        
+        {% endfor %}
+        {% endif %}
+        
+        <form action='' method='POST' id="registrationForm" onsubmit="return validateForm()">
+            {% csrf_token %}
             <div class="section">
                 <div class="input-box">
                     <label for="email">Email:</label>
