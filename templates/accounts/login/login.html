@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Login</title>
+    <style>
+   
+body {
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    min-height: 100vh;
+}
+.wrapper{
+    width: 420px;
+    border-radius: 10px;
+    background: whitesmoke;
+    padding: 30px 40px;
+}
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
+    background-color: orangered;
+    color: white;
+    border-radius: 20px;
+}
+.user select{
+    width: 100%;
+    height: 42px;
+   
+}
+.wrapper .input-box{
+    width: 100%;
+    height:50px;
+    margin: 20px 0px;
+}
+.input-box input{
+    width: 90%;
+    height: 90%;
+    
+    font-size: 16px;
+    padding: 0px 20px 0px 10px;
+}
+.wrapper .remember-forget{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+
+}
+.remember-forget label input{
+    margin-right: 3px;
+}
+.remember-forget a{
+    text-decoration: none;
+}
+.remember-forget a:hover {
+    text-decoration: underline;
+}
+.wrapper .btn{
+    width:50%;
+    height: 45px;
+    border-radius: 40px;
+    background-color: orangered;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight:600;
+    margin-left: 90px;
+}
+.wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+.register-link p a{
+    text-decoration: none;
+    font-weight:600;
+}
+.register-link p a:hover{
+    text-decoration: underline;
+}
+.wrapper h3{
+    font-size: 20px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+    </style>
+    
+</head>
+<body>
+    <td>
+    <div class="wrapper">
+        <form action="">
+            <h1> <b>User Login</b></h1>
+            <h3><b> Role</b></h3>
+            <div class="user">
+                <select name="Role" >
+                    <option value="select user">Select User</option>
+                    <option value="Customer">Customer</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Restaurant"> Restaurant</option>
+                    <option value="Delivery Person"> Delivery Person</option>
+                </select>
+            </div>
+            <h3><b> Email Id</b></h3>
+            <div class="input-box">
+                <input type="email" placeholder="email" required>
+            </div>
+            <h3> <b>Password</b></h3>
+            <div class="input-box">
+                
+                <input type="password" placeholder="password" required>
+            </div>
+            <div class="remember-forget">
+                <label>
+                    <input type ="checkbox"> Remember Me</label>
+                    <a href="#">Forget password?</a>
+                </label>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="register-link">
+                <p>
+                    Don't have an account? <a href="#">Register</a>
+                </p>
+            </div>
+        </form>    
+    </div>
+    
+</body>
+</html>
