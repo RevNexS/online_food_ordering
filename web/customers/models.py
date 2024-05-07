@@ -86,3 +86,6 @@ class CustomerUserBackend(ModelBackend):
                 return user
         except CustomerUser.DoesNotExist:
             return None
+
+# TODO [] Create a table for Customer Order (What they have order, Their address, food Quantity).
+# TODO [] Create a table for Payment (What method of payment was used, How much was paid, Was any coupon applied.)
