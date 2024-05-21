@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Registration</title>
+    <title>User Login</title>
     <link rel="stylesheet" href="style.css">
     
     <style>
@@ -84,24 +84,26 @@
     margin: 20px auto 0; 
     display: block; 
 }
-       .register-link {
+       .Signup-link {
             text-align: center;
             font-size: 14.5px;
             margin-top: 20px;
+            text-decoration: none;
         }
 
-        .register-link a {
+        .login-link a {
             text-decoration: none;
             font-weight: 600;
             color: orangered;
+            text-decoration: none;
         }
 
-        .register-link a:hover {
+        .login-link a:hover {
             text-decoration: underline;
         }
 
        
-        @media (min-width: 768px) {
+        @media (min-width: 5000px) {
             .input-box {
                 flex: 1; 
             }
@@ -121,74 +123,49 @@
 </head>
 <body>
     <div class="wrapper">
-        <h1>Customer Register</h1>
-        <form id="registrationForm" onsubmit="return validateForm()">
-            <div class="section">
-                <div class="input-box">
-                    <label for="first-name">First Name:</label>
-                    <input type="text" id="first-name" name="first-name" required>
-                </div>
-                <div class="input-box">
-                    <label for="last-name">Last Name:</label>
-                    <input type="text" id="last-name" name="last-name" required>
-                </div>
-            </div>
+        <h1>User Login</h1>
+        {% if messages %}
+        {% for message in messages %}
 
+        {% if message.tags == "error" %}
+            <div class="alert alert-danger" role="alert" id="{{message.tags}}">
+                {{ message }}
+            </div>
+        {% elif message.tags == 'success' %}
+        <div class="alert alert-success" role="alert" id='success'>
+            {{ message }}
+        </div>
+        {% endif %}
+        
+        {% endfor %}
+        {% endif %}
+        
+        <form action='' method='POST' id="registrationForm" onsubmit="return validateForm()">
+            {% csrf_token %}
             <div class="section">
                 <div class="input-box">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+
                 <div class="input-box">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required minlength="8">
                 </div>
             </div>
 
-            <div class="section">
-                <div class="input-box">
-                    <label for="contact-number">Contact Number:</label>
-                    <input type="text" id="contact-number" name="contact-number" required pattern="[0-9]{10}">
-                </div>
-                <div class="input-box street">
-                    <label for="street">Street:</label>
-                    <input type="text" id="street" name="street" required>
-                </div>
-            </div>
+            <button type="submit" class="btn">Login</button>
 
-            <div class="section">
-                <div class="input-box">
-                    <label for="city">City:</label>
-                    <input type="text" id="city" name="city" required>
-                </div>
-                <div class="input-box">
-                    <label for="pin-code">Pin Code:</label>
-                    <input type="text" id="pin-code" name="pin-code" required pattern="[0-9]{6}">
-                </div>
-            </div>
-
-            <button type="submit" class="btn">Register</button>
-
-            <div class="register-link">
-                <p>Already have an account? <a href="#">Login</a></p>
+            <div class="Signup-link">
+                <p>Create an Account? <a href="#">Sign Up</a></p>
             </div>
         </form>
     </div>
 
     <script>
         function validateForm() {
-            var form = document.getElementById('registrationForm');
+            var form = document.getElementById('loginForm');
             var isValid = true;
-
-            var pinCodeInput = form.querySelector('#pin-code');
-            var pinCodePattern = /^[0-9]{6}$/;
-            if (!pinCodePattern.test(pinCodeInput.value)) {
-                isValid = false;
-                pinCodeInput.classList.add('invalid');
-            } else {
-                pinCodeInput.classList.remove('invalid');
-            }
-
             var emailInput = form.querySelector('#email');
             if (!emailInput.checkValidity()) {
                 isValid = false;
@@ -196,16 +173,6 @@
             } else {
                 emailInput.classList.remove('invalid');
             }
-
-            var phoneNumberInput = form.querySelector('#contact-number');
-            var phoneNumberPattern = /^[0-9]{10}$/;
-            if (!phoneNumberPattern.test(phoneNumberInput.value)) {
-                isValid = false;
-                phoneNumberInput.classList.add('invalid');
-            } else {
-                phoneNumberInput.classList.remove('invalid');
-            }
-
             return isValid;
         }
     </script>
