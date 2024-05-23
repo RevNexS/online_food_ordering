@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px;
+    }
+    th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+    .food-image {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+    }
+    .quantity-buttons {
+      display: flex;
+      justify-content: space-around;
+      width: 80px;
+    }
+    button {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+<div style="text-align: center;background-color: White;padding: 10px;">
+    <h2>My Cart</h2>
+</div>
+
+<table style="width:100%">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th>Food</th>
+      <th>Food Name</th>
+      <th>Category</th>
+      <th>Restaurant</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody id="cart-body">
+    <tr id="item1">
+      <td><img src="spicy chicken burger.jfif" alt="Food Image" class="food-image"></td>
+      <td class="item-details">
+        <span id="name1">Spicy Chicken Burger</span>
+        <span style="margin-left: 10px;">(Burgers)</span>
+      </td>
+      <td>Burgers</td>
+      <td>Burger Paradise</td>
+      <td class="price" data-price="79.0">79.0</td>
+      <td>
+        <div class="quantity-buttons">
+          <button onclick="decreaseQuantity('quantity1')" style="background-color: green; color: white;">-</button>
+          <span id="quantity1">1</span>
+          <button onclick="increaseQuantity('quantity1')" style="background-color: green; color: white;">+</button>
+        </div>
+      </td>
+      <td><button onclick="removeItem('item1')" style="background-color: green; color: white;">Remove</button></td>
+    </tr>
+    <tr id="item2">
+      <td><img src="Cheesy Veggie Pizza.jfif" alt="Food Image" class="food-image"></td>
+      <td class="item-details">
+        <span id="name2">Cheesy Veggie Pizza</span>
+        <span style="margin-left: 10px;">(Pizza)</span>
+      </td>
+      <td>Pizza</td>
+      <td>Pizza Palace</td>
+      <td class="price" data-price="129.0">129.0</td>
+      <td>
+        <div class="quantity-buttons">
+          <button onclick="decreaseQuantity('quantity2')" style="background-color: green; color: white;">-</button>
+          <span id="quantity2">1</span>
+          <button onclick="increaseQuantity('quantity2')" style="background-color: green; color: white;">+</button>
+        </div>
+      </td>
+      <td><button onclick="removeItem('item2')"style="background-color: green; color: white;">Remove</button></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4" style="text-align: right;"><strong>Total</strong></td>
+      <td id="total-price">208.0</td>
+      <td id="total-quantity">2</td>
+    </tr>
+  </tfoot>
+</table>
+
+<script>
+  function decreaseQuantity(quantityId) {
+    let quantityElement = document.getElementById(quantityId);
+    let currentQuantity = parseInt(quantityElement.textContent);
+    if (currentQuantity > 1) {
+      quantityElement.textContent = currentQuantity - 1;
+      updateTotals();
+    }
+  }
+
+  function increaseQuantity(quantityId) {
+    let quantityElement = document.getElementById(quantityId);
+    let currentQuantity = parseInt(quantityElement.textContent);
+    quantityElement.textContent = currentQuantity + 1;
+    updateTotals();
+  }
+
+  function removeItem(itemId) {
+    let itemElement = document.getElementById(itemId);
+    itemElement.parentNode.removeChild(itemElement);
+    updateTotals();
+  }
+
+  function updateTotals() {
+    let totalQuantity = 0;
+    let totalPrice = 0.0;
+
+    document.querySelectorAll('tbody tr').forEach(row => {
+      let quantity = parseInt(row.querySelector('.quantity-buttons span').textContent);
+      let price = parseFloat(row.querySelector('.price').getAttribute('data-price'));
+      totalQuantity += quantity;
+      totalPrice += quantity * price;
+    });
+
+    document.getElementById('total-quantity').textContent = totalQuantity;
+    document.getElementById('total-price').textContent = totalPrice.toFixed(1);
+  }
+</script>
+
+</body>
+</html>
