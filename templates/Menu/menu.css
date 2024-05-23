@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* color variables */
+    --accent-color: #EAF2F5;
+    --primary-text-color: #141414;
+    --secondary-text-color: #007676;
+    --light-text-color: #fff;
+    --primary-color: #fff;
+    --secondary-color: #007676;
+    --alpha-secondary-color: rgba(0, 118, 118, 0.2);
+    --discount-color: #E71A1C;
+    --card-hover-bg-color: #F9F9F9;
+    --border-color: #f9f9f9;
+    --box-shadow-color: var(--accent-color);
+    --shadow: rgba(0, 0, 0, 0.05);
+    --box-shadow: rgba(0, 0, 0, 0.25);
+    --discount-banner-background-overlay: linear-gradient(rgba(0, 118, 118, 0.8), rgba(0, 118, 118, 0.8));
+    --phone-app-shadow: #C7E1EB;
+    --alpha-primary-color: rgba(255, 255, 255, 0.5);
+    --rating-color: #FFA800;
+
+    /* transition curves */
+    --transition-curve: cubic-bezier(0.36, -0.21, 0.16, 1.97);
+}
+
+html{
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+body{
+    font-family: "Lato", sans-serif;
+    font-family: "Lato", sans-serif;
+    color: var(--primary-text-color);
+    background: var(--primary-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--accent-color);
+    font-family: "Lato", sans-serif;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 4rem;
+    z-index: 9;
+    background-color: var(--accent-color);
+    padding: 0 10vw;
+    border: 1px solid var(--secondary-color);
+    box-shadow: 2px 2px #bbb;
+}
+
+.logo{
+    height: 1.5rem;
+}
+
+.links-container{
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin-left: 7%;
+}
+
+
+.links{
+    color: var(--primary-text-color);
+    text-decoration: none;
+    text-transform: capitalize;
+    padding: .5rem 1rem;
+    transition: .2s;
+}
+
+.links:hover{
+    color: var(--secondary-text-color);
+}
+
+.nav-extras{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 1rem;
+}
+
+.search{
+    position: relative;
+    width: 20vw;
+    min-width: 150px;
+    height: 2rem;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+.search-box{
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    padding: 1rem;
+    outline: none;
+    font-size: .9rem;
+    border: none;
+}
+
+.search-btn{
+    position: absolute;
+    border:none;
+    right:0;
+    width: 3rem;
+    height: 100%;
+    background: var(--primary-color);
+    text-align: center;
+    cursor: pointer;
+    color: var(--secondary-text-color);
+}
+
+.cart{
+    display: flex;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--secondary-text-color);
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: .5s;
+}
+
+.cart:hover, .locate-btn:hover,.btn.transparent:hover{
+    background: var(--alpha-secondary-color);
+}
+
+#menu-header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 25px 0;
+}
+
+#section {
+    color: orange;
+    font-size: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+}
+
+#searchBox {
+    width: 50%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid orange;
+    border-radius: 5px;
+}
+
+.menu_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 60px;
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+    border-radius: 5%;
+    padding: 5px;
+    border: 2px solid orange;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+    object-fit: cover;
+}
+.add-to-cart {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: center; /* Ensure button stays centered */
+}
+
+.add-to-cart:hover {
+    background-color: var(--primary-text-color);
+    color: var(--secondary-color);
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 5px;
+    flex: 1 1 calc(25% - 60px); 
+    max-width: calc(25% - 60px);
+    transition: background-color 0.3s ease;
+    justify-content: space-between; /* This ensures the children are spaced out evenly */
+    padding: 10px; /* Add some padding for better spacing */
+}
+
+.box div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.dish-name {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%; /* Ensure it takes the full width for proper alignment */
+    text-align: center; /* Center align text */
+}
+
+
+
+@media (max-width: 2000) {
+    .box {
+        flex: 1 1 calc(25% - 60px);
+        max-width: calc(25% - 60px);
+    }
+}
+
+@media (max-width: 800px) {
+    .box {
+        flex: 1 1 calc(50% - 60px);
+        max-width: calc(50% - 60px);
+    }
+} 
+
+@media (max-width: 620px) {
+    .box {
+        flex: 1 1 calc(100% - 60px);
+        max-width: calc(100% - 60px);
+    }
+} 
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown button */
+.dropbtn {
+    background-color: transparent;
+    color: var(--primary-text-color);
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    /* padding: .5rem 1rem; */
+    text-transform: capitalize;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--accent-color);
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: var(--primary-text-color);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: var(--alpha-secondary-color);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: var(--alpha-secondary-color);
+}
+
+.user-profile {
+    margin-left: 1rem;
+    color: var(--accent-color);
+}
+
+.profile-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--primary-text-color);
+    position: relative;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    background-color: var(--accent-color);
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+}
+
+.profile-dropdown a {
+    color: var(--primary-text-color);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.profile-dropdown a:hover {
+    background-color: var(--alpha-secondary-color);
+}
+
+.usericon{
+    color: var(--secondary-color);
+}

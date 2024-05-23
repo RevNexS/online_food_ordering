@@ -1,19 +1,24 @@
-function filterMenu() {
-    var input, filter, menuRows, boxes, dishName, i, j, txtValue;
-    input = document.getElementById('searchBox');
-    filter = input.value.toLowerCase();
-    menuRows = document.getElementsByClassName("menu_row");
+function highlightItem(element) {
+    element.style.transform = "scale(1.05)";
+    element.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
+}
 
-    for (j = 0; j < menuRows.length; j++) {
-        boxes = menuRows[j].getElementsByClassName('box');
-        for (i = 0; i < boxes.length; i++) {
-            dishName = boxes[i].getElementsByClassName("dish-name")[0];
-            txtValue = dishName.textContent || dishName.innerText;
-            if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                boxes[i].style.display = "";
-            } else {
-                boxes[i].style.display = "none";
-            }
+function unhighlightItem(element) {
+    element.style.transform = "scale(1)";
+    element.style.boxShadow = "none";
+}
+
+function filterMenu() {
+    var input = document.getElementById("searchBox");
+    var filter = input.value.toUpperCase();
+    var menu = document.getElementById("Menu");
+    var boxes = menu.getElementsByClassName("box");
+    for (var i = 0; i < boxes.length; i++) {
+        var dishName = boxes[i].getElementsByClassName("dish-name")[0];
+        if (dishName.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            boxes[i].style.display = "";
+        } else {
+            boxes[i].style.display = "none";
         }
     }
 }
