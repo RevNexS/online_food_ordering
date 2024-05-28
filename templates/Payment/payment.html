@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="payment.css">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <ul class="links-container">
+            <li class="link-items"><a href="#" class="links">Home</a></li>
+            <li class="link-items"><a href="#" class="links">Menu</a></li>
+            <li class="link-items"><a href="#" class="links">Restaurants</a></li>
+            <li class="link-items"><a href="#" class="links">Track Order</a></li>
+        </ul>
+        <!-- cart and profile -->
+        <div class="nav-extras">
+            <a href="#" class="cart"><i class="fa-solid fa-cart-shopping"></i></a>
+            <div class="user-profile">
+                <div class="dropdown">
+                    <button class="dropbtn profile-btn">
+                        <i class="fa-solid fa-user usericon"></i>
+                    </button>
+                    <div class="dropdown-content profile-dropdown">
+                        <a href="#">Profile</a>
+                        <a href="#">Settings</a>
+                        <a href="#">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Payment Page Content -->
+    <div class="payment-container">
+        <h1>Payment Information</h1>
+        <form id="paymentForm">
+            <!-- Personal Information Section -->
+            <div class="section">
+                <h2>Personal Information</h2>
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="input-group">
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="tel" id="mobile" name="mobile" required>
+                </div>
+                <div class="input-group">
+                    <label for="pin">Pin Code:</label>
+                    <input type="text" id="pin" name="pin" required>
+                </div>
+            </div>
+
+            <!-- Order Summary Section -->
+            <div class="section">
+                <h2>Order Summary</h2>
+                <div id="orderSummary">
+                    <!-- order items -->
+                    <div class="order-item">
+                        <span>Cheese burger</span>
+                        <span>₹89</span>
+                    </div>
+                    <div class="order-item">
+                        <span>Salted fries</span>
+                        <span>₹59</span>
+                    </div>
+                    <div class="order-total">
+                        <span>Total</span>
+                        <span>₹148</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Options Section -->
+            <div class="section">
+                <h2>Payment Options</h2>
+                <div class="input-group">
+                    <label for="paymentMethod">Choose a Payment Method:</label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="" disabled selected>Select a payment method</option>
+                        <option value="cod">Cash on Delivery</option>
+                        <option value="creditCard">Credit Card</option>
+                        <option value="debitCard">Debit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="phonepe">PhonePe UPI</option>
+                    </select>
+                </div>
+                <!-- Additional Payment Fields -->
+                <div id="paymentDetails" class="input-group"></div>
+            </div>
+
+            <!-- Place Order Button -->
+            <div class="section">
+                <button type="submit" class="place-order-btn">Place Order</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="payment.js"></script>
+</body>
+
+</html>
