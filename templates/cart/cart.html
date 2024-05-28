@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,133 +5,327 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart</title>
   <style>
-    table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
+    body {
+      font-family: "Lato", sans-serif;
+      color: var(--primary-text-color);
+      background: var(--primary-color);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: var(--accent-color);
     }
-    th, td {
+
+    :root {
+      --accent-color: #EAF2F5;
+      --primary-text-color: #141414;
+      --secondary-text-color: #007676;
+      --light-text-color: #fff;
+      --primary-color: #fff;
+      --secondary-color: #007676;
+      --alpha-secondary-color: rgba(0, 118, 118, 0.2);
+      --discount-color: #E71A1C;
+      --card-hover-bg-color: #F9F9F9;
+      --border-color: #f9f9f9;
+      --box-shadow-color: var(--accent-color);
+      --shadow: rgba(0, 0, 0, 0.05);
+      --box-shadow: rgba(0, 0, 0, 0.25);
+      --discount-banner-background-overlay: linear-gradient(rgba(0, 118, 118, 0.8), rgba(0, 118, 118, 0.8));
+      --phone-app-shadow: #C7E1EB;
+      --alpha-primary-color: rgba(255, 255, 255, 0.5);
+      --rating-color: #FFA800;
+      --transition-curve: cubic-bezier(0.36, -0.21, 0.16, 1.97);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .cart {
+      width: 80%;
+      max-width: 900px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      margin-bottom: 20px;
       padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
     }
-    th {
-      background-color: #f2f2f2;
-      text-align: left;
+
+    .cart-item:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
+
     .food-image {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       object-fit: cover;
+      border-radius: 8px;
+      margin-right: 15px;
     }
+
+    .item-details {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .item-details span {
+      margin-bottom: 5px;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
     .quantity-buttons {
       display: flex;
-      justify-content: space-around;
-      width: 80px;
+      align-items: center;
     }
-    button {
+
+    .quantity-buttons button {
+      background-color: #007676;
+      color: #fff;
+      border: none;
       padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin: 0 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .quantity-buttons button:hover {
+      background-color: #005959;
+    }
+
+    .remove-button {
+      background-color: #E71A1C;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .remove-button:hover {
+      background-color: #b51516;
+    }
+
+    .cart-summary {
+      width: 80%;
+      max-width: 900px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      text-align: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cart-summary span {
+      display: block;
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #007676;
+    }
+
+    .summary-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .summary-label {
+      font-size: 1.2em;
+      color: #141414;
+    }
+
+    .order-button {
+      background-color: #007676;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .order-button:hover {
+      background-color: #005959;
     }
   </style>
 </head>
 <body>
-<div style="text-align: center;background-color: White;padding: 10px;">
-    <h2>My Cart</h2>
+
+<h2>My Cart</h2>
+
+<div class="cart">
+  <div class="cart-item" id="item1" data-price="7.99">
+    <img src="burger.jpg" alt="Spicy Chicken Burger" class="food-image">
+    <div class="item-details">
+      <span><strong>Spicy Chicken Burger</strong></span>
+      <span>Burgers - Burger Paradise</span>
+    </div>
+    <span>$7.99</span>
+    <div class="button-container">
+      <div class="quantity-buttons">
+        <button onclick="decreaseQuantity('item1')">-</button>
+        <span id="quantity1">1</span>
+        <button onclick="increaseQuantity('item1')">+</button>
+      </div>
+      <button class="remove-button" onclick="removeItem('item1')">Remove</button>
+    </div>
+  </div>
+
+  <div class="cart-item" id="item2" data-price="12.99">
+    <img src="cheese.jpeg" alt="Cheesy Veggie Pizza" class="food-image">
+    <div class="item-details">
+      <span><strong>Cheesy Veggie Pizza</strong></span>
+      <span>Pizza - Pizza Palace</span>
+    </div>
+    <span>$12.99</span>
+    <div class="button-container">
+      <div class="quantity-buttons">
+        <button onclick="decreaseQuantity('item2')">-</button>
+        <span id="quantity2">1</span>
+        <button onclick="increaseQuantity('item2')">+</button>
+      </div>
+      <button class="remove-button" onclick="removeItem('item2')">Remove</button>
+    </div>
+  </div>
+
+  <div class="cart-item" id="item3" data-price="9.99">
+    <img src="beef.jpeg" alt="Beef Tacos" class="food-image">
+    <div class="item-details">
+      <span><strong>Beef Tacos</strong></span>
+      <span>Tacos - Taco Town</span>
+    </div>
+    <span>$9.99</span>
+    <div class="button-container">
+      <div class="quantity-buttons">
+        <button onclick="decreaseQuantity('item3')">-</button>
+        <span id="quantity3">1</span>
+        <button onclick="increaseQuantity('item3')">+</button>
+      </div>
+      <button class="remove-button" onclick="removeItem('item3')">Remove</button>
+    </div>
+  </div>
+
+  <div class="cart-item" id="item4" data-price="19.99">
+    <img src="sushi.jpg" alt="Sushi Platter" class="food-image">
+    <div class="item-details">
+      <span><strong>Sushi Platter</strong></span>
+      <span>Sushi - Sushi World</span>
+    </div>
+    <span>$19.99</span>
+    <div class="button-container">
+      <div class="quantity-buttons">
+        <button onclick="decreaseQuantity('item4')">-</button>
+        <span id="quantity4">1</span>
+        <button onclick="increaseQuantity('item4')">+</button>
+      </div>
+      <button class="remove-button" onclick="removeItem('item4')">Remove</button>
+    </div>
+  </div>
+
+  <div class="cart-item" id="item5" data-price="8.99">
+    <img src="salad.jpg" alt="Caesar Salad" class="food-image">
+    <div class="item-details">
+      <span><strong>Caesar Salad</strong></span>
+      <span>Salads - Healthy Eats</span>
+    </div>
+    <span>$8.99</span>
+    <div class="button-container">
+      <div class="quantity-buttons">
+        <button onclick="decreaseQuantity('item5')">-</button>
+        <span id="quantity5">1</span>
+        <button onclick="increaseQuantity('item5')">+</button>
+      </div>
+      <button class="remove-button" onclick="removeItem('item5')">Remove</button>
+    </div>
+  </div>
 </div>
 
-<table style="width:100%">
-  <thead>
-    <tr style="background-color: #f2f2f2;">
-      <th>Food</th>
-      <th>Food Name</th>
-      <th>Category</th>
-      <th>Restaurant</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody id="cart-body">
-    <tr id="item1">
-      <td><img src="spicy chicken burger.jfif" alt="Food Image" class="food-image"></td>
-      <td class="item-details">
-        <span id="name1">Spicy Chicken Burger</span>
-        <span style="margin-left: 10px;">(Burgers)</span>
-      </td>
-      <td>Burgers</td>
-      <td>Burger Paradise</td>
-      <td class="price" data-price="79.0">79.0</td>
-      <td>
-        <div class="quantity-buttons">
-          <button onclick="decreaseQuantity('quantity1')" style="background-color: green; color: white;">-</button>
-          <span id="quantity1">1</span>
-          <button onclick="increaseQuantity('quantity1')" style="background-color: green; color: white;">+</button>
-        </div>
-      </td>
-      <td><button onclick="removeItem('item1')" style="background-color: green; color: white;">Remove</button></td>
-    </tr>
-    <tr id="item2">
-      <td><img src="Cheesy Veggie Pizza.jfif" alt="Food Image" class="food-image"></td>
-      <td class="item-details">
-        <span id="name2">Cheesy Veggie Pizza</span>
-        <span style="margin-left: 10px;">(Pizza)</span>
-      </td>
-      <td>Pizza</td>
-      <td>Pizza Palace</td>
-      <td class="price" data-price="129.0">129.0</td>
-      <td>
-        <div class="quantity-buttons">
-          <button onclick="decreaseQuantity('quantity2')" style="background-color: green; color: white;">-</button>
-          <span id="quantity2">1</span>
-          <button onclick="increaseQuantity('quantity2')" style="background-color: green; color: white;">+</button>
-        </div>
-      </td>
-      <td><button onclick="removeItem('item2')"style="background-color: green; color: white;">Remove</button></td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="4" style="text-align: right;"><strong>Total</strong></td>
-      <td id="total-price">208.0</td>
-      <td id="total-quantity">2</td>
-    </tr>
-  </tfoot>
-</table>
+<div class="cart-summary">
+  <div class="summary-item">
+    <span class="summary-label">Total Quantity:</span>
+    <span id="total-quantity">0</span>
+  </div>
+  <div class="summary-item">
+    <span class="summary-label">Total Price:</span>
+    <span id="total-price">$0.00</span>
+  </div>
+  <button class="order-button" onclick="placeOrder()">Order Now</button>
+</div>
 
 <script>
-  function decreaseQuantity(quantityId) {
-    let quantityElement = document.getElementById(quantityId);
-    let currentQuantity = parseInt(quantityElement.textContent);
-    if (currentQuantity > 1) {
-      quantityElement.textContent = currentQuantity - 1;
-      updateTotals();
-    }
-  }
-
-  function increaseQuantity(quantityId) {
-    let quantityElement = document.getElementById(quantityId);
-    let currentQuantity = parseInt(quantityElement.textContent);
-    quantityElement.textContent = currentQuantity + 1;
-    updateTotals();
-  }
-
-  function removeItem(itemId) {
-    let itemElement = document.getElementById(itemId);
-    itemElement.parentNode.removeChild(itemElement);
-    updateTotals();
-  }
-
-  function updateTotals() {
+  function updateCartSummary() {
     let totalQuantity = 0;
-    let totalPrice = 0.0;
+    let totalPrice = 0;
 
-    document.querySelectorAll('tbody tr').forEach(row => {
-      let quantity = parseInt(row.querySelector('.quantity-buttons span').textContent);
-      let price = parseFloat(row.querySelector('.price').getAttribute('data-price'));
+    document.querySelectorAll('.cart-item').forEach(item => {
+      const quantity = parseInt(item.querySelector('.quantity-buttons span').textContent);
+      const price = parseFloat(item.getAttribute('data-price'));
       totalQuantity += quantity;
       totalPrice += quantity * price;
     });
 
     document.getElementById('total-quantity').textContent = totalQuantity;
-    document.getElementById('total-price').textContent = totalPrice.toFixed(1);
+    document.getElementById('total-price').textContent = totalPrice.toFixed(2);
   }
+
+  function increaseQuantity(itemId) {
+    const item = document.getElementById(itemId);
+    let quantityElement = item.querySelector('.quantity-buttons span');
+    let quantity = parseInt(quantityElement.textContent);
+    quantity++;
+    quantityElement.textContent = quantity;
+    updateCartSummary();
+  }
+
+  function decreaseQuantity(itemId) {
+    const item = document.getElementById(itemId);
+    let quantityElement = item.querySelector('.quantity-buttons span');
+    let quantity = parseInt(quantityElement.textContent);
+    if (quantity > 1) {
+      quantity--;
+      quantityElement.textContent = quantity;
+      updateCartSummary();
+    }
+  }
+
+  function removeItem(itemId) {
+    const item = document.getElementById(itemId);
+    item.parentNode.removeChild(item);
+    updateCartSummary();
+  }
+
+  function placeOrder() {
+    alert('Thank you for your order!');
+    // Implement the order placing functionality here
+  }
+
+  // Initial call to update the summary based on initial quantities
+  updateCartSummary();
 </script>
 
 </body>
