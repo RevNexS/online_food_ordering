@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <ul class="links-container">
+            <li class="link-items"><a href="#" class="links">Home</a></li>
+            <li class="link-items"><a href="#" class="links">Menu</a></li>
+            <li class="link-items"><a href="#" class="links">Restaurants</a></li>
+            <li class="link-items"><a href="#" class="links">Track Order</a></li>
+            <li class="link-items"><a href="#" class="links">Contact Us</a></li>
+            <li class="link-items"><a href="#" class="links">About Us</a></li>
+        </ul>
+        <!-- profile -->
+        <div class="nav-extras">
+            <div class="user-profile">
+                <div class="dropdown">
+                    <button class="dropbtn profile-btn">
+                        <i class="fa-solid fa-user usericon"></i>
+                    </button>
+                    <div class="dropdown-content profile-dropdown">
+                        <a href="#">Profile</a>
+                        <a href="#">Settings</a>
+                        <a href="#">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <h2>My Cart</h2>
+
+    <div class="cart" id="cart">
+        <p id="empty-message" class="hidden">Sorry, your cart is empty.</p>
+
+        <div class="cart-item" id="item1" data-price="150">
+            <div class="item-left">
+                <img src="../menu/images/chicken biryani.jpg" alt="Chicken biryani" class="food-image">
+                <span><strong>Chicken biryani</strong></span>
+            </div>
+            <div class="item-right">
+                <span>Rs 150</span>
+                <div class="quantity-buttons">
+                    <button onclick="decreaseQuantity('item1')">-</button>
+                    <span id="quantity1">1</span>
+                    <button onclick="increaseQuantity('item1')">+</button>
+                </div>
+                <button class="remove-button" onclick="removeItem('item1')">Remove</button>
+            </div>
+        </div>
+
+        <div class="cart-item" id="item2" data-price="120">
+            <div class="item-left">
+                <img src="../menu/images/chicken kabab.jpg" alt="Chicken kabab" class="food-image">
+                <span><strong>Chicken kabab</strong></span>
+            </div>
+            <div class="item-right">
+                <span>Rs 120</span>
+                <div class="quantity-buttons">
+                    <button onclick="decreaseQuantity('item2')">-</button>
+                    <span id="quantity2">1</span>
+                    <button onclick="increaseQuantity('item2')">+</button>
+                </div>
+                <button class="remove-button" onclick="removeItem('item2')">Remove</button>
+            </div>
+        </div>
+
+        <div class="cart-item" id="item3" data-price="150">
+            <div class="item-left">
+                <img src="../menu/images/daal gosht.jpg" alt="Dal gosht" class="food-image">
+                <span><strong>Dal gosht</strong></span>
+            </div>
+            <div class="item-right">
+                <span>Rs 150</span>
+                <div class="quantity-buttons">
+                    <button onclick="decreaseQuantity('item3')">-</button>
+                    <span id="quantity3">1</span>
+                    <button onclick="increaseQuantity('item3')">+</button>
+                </div>
+                <button class="remove-button" onclick="removeItem('item3')">Remove</button>
+            </div>
+        </div>
+
+        <div class="cart-item" id="item4" data-price="50">
+            <div class="item-left">
+                <img src="../menu/images/butter naan.jpg" alt="Butter naan" class="food-image">
+                <span><strong>Butter naan</strong></span>
+            </div>
+            <div class="item-right">
+                <span>Rs 50</span>
+                <div class="quantity-buttons">
+                    <button onclick="decreaseQuantity('item4')">-</button>
+                    <span id="quantity4">1</span>
+                    <button onclick="increaseQuantity('item4')">+</button>
+                </div>
+                <button class="remove-button" onclick="removeItem('item4')">Remove</button>
+            </div>
+        </div>
+
+        <div class="cart-item" id="item5" data-price="50">
+            <div class="item-left">
+                <img src="../menu/images/gulabjamun.jpg" alt="Gulabjamun" class="food-image">
+                <span><strong>Gulabjamun</strong></span>
+            </div>
+            <div class="item-right">
+                <span>Rs 50</span>
+                <div class="quantity-buttons">
+                    <button onclick="decreaseQuantity('item5')">-</button>
+                    <span id="quantity5">1</span>
+                    <button onclick="increaseQuantity('item5')">+</button>
+                </div>
+                <button class="remove-button" onclick="removeItem('item5')">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-summary">
+        <div class="summary-item">
+            <span class="summary-label">Total Quantity:</span>
+            <span id="total-quantity">0</span>
+        </div>
+        <div class="summary-item">
+            <span class="summary-label">Total Price:</span>
+            <span id="total-price">Rs 0.00</span>
+        </div>
+        <button class="order-button" onclick="placeOrder()">Order Now</button>
+    </div>
+
+    <script src="cart.js"></script>
+</body>
+</html>
