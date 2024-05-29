@@ -1,0 +1,279 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    {% comment %} <link rel="stylesheet" href="hero.css"> <!-- #TODO [] Update this to include url --> {% endcomment %}
+    <link rel="stylesheet" href="{% static "dashboard/css/hero.css" %}">
+
+</head>
+
+<body>
+    <header>
+        <!-- navbar -->
+        <nav class="navbar">
+
+            <!-- logo -->
+            <!-- <img src="img/logo.png" class="logo" alt="Error Loading Image"> -->
+            <!-- <h1>HI</h1> -->
+
+            <!-- ul -->
+            <ul class="links-container">
+                <li class="link-items"><a href="#" class="links">Login</a></li>
+                <li class="link-items"><a href="#" class="links">Menu</a></li>
+                <li class="link-items"><a href="#" class="links">Restaurants</a></li>
+                <li class="link-items"><a href="#" class="links">Track Order</a></li>
+                <li class="link-items"><a href="#" class="links">Order</a></li>
+                <li class="link-items"><a href="#" class="links">Contact Us</a></li>
+                <li class="link-items"><a href="#" class="links">About Us</a></li>
+            </ul>
+            
+
+            <!-- searchbox -->
+            <div class="nav-extras">
+                <div class="search">
+                    <input type="text" class="search-box" placeholder="Search Restaurants,Cuisine">
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <!-- cart -->
+                <a href="#" class="cart"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </nav>
+
+        <!-- hero section -->
+        <main id="hero-section">
+
+            <!-- hero-content -->
+            <div class="hero-content">
+
+                <h1 class="hero-heading">Eat the best</h1>
+                <p class="hero-line">Explore and understand the culture more by tasting the amazing dishes of that culture</p>
+                
+                <div class="search location">
+                    <input type="text" class="search-box" placeholder="Search Restaurants,Cuisine...">
+                    <button class="search-btn locate-btn"><i class="fa-solid fa-location-crosshairs"></i></button>
+                </div>
+
+                <div class="hero-action-btn-container">
+                    <button class="btn">Order Food</button>
+                    <p class="or">OR</p>
+                    <button class="btn transparent">Make reservation</button>
+                </div>
+            
+            </div>
+
+            <!-- hero image container -->
+            
+            <div class="hero-img-container">
+                <div class="background-ele">
+                    <div class="elipse"></div>
+                    <div class="elipse"></div>
+                    <div class="elipse"></div>
+                </div>
+                <div class="foreground-elements">
+                    <img src="img/hero-biryani.png" class="hero-img" alt="Error loading Image">
+                    <img src="img/hero-burger.png" class="hero-img" alt="Error loading Image">
+                    <img src="img/hero-pizza.png" class="hero-img" alt="Error loading Image">
+
+                </div>
+            </div>
+
+        </main>
+    </header>
+
+    <section id="restaurants-section">
+
+        <div class="section">
+            <!-- food-image container -->
+            <div class="food-image-container">
+                <div class="circle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="circle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div>
+                    <img src="img/food-1.png" class="food-img">
+                    <img src="img/food-2.png" class="food-img">
+                    <img src="img/food-3.png" class="food-img">
+                    <img src="img/food-4.png" class="food-img">
+                    <img src="img/food-5'.png" class="food-img">
+                    <img src="img/food-6.png" class="food-img">                    
+                    <img src="img/food-7.png" class="food-img">                    
+
+                </div>
+
+            </div>
+
+            <!-- section content -->
+            <div class="section-detail">
+                <span class="section-highlight">From Professional chef</span>
+                <p class="section-title">1000+</p>
+                <p class="section-info">Order from our 1000+ food and beverages menu. Food for every taste and mood.</p>
+                <button class="btn">Order Food</button>
+            </div>
+        </div>
+        
+        <!-- New Section for Food Categories -->
+        <section class="food-categories-section">
+            <h2>Hello,hungry souls! What'll set your taste buds dancing?</h2>
+            <div class="food-categories-wrapper">
+                <div class="food-categories">
+            <div class="category">
+                <div class="category-img">
+                    <img src="img/cat-pizza.jpg" alt="Pizza">
+                </div>
+                <p class="category-name">Pizza</p>
+            </div>
+            <div class="category">
+                <div class="category-img">
+                    <img src="img/cat-burger.jpg" alt="Burger">
+                </div>
+                <p class="category-name">Burgers</p>
+            </div>
+            <div class="category">
+                <div class="category-img">
+                    <img src="img/cat-biryani.jpg" alt="Biryani">
+                </div>
+                <p class="category-name">Biryani</p>
+            </div>
+            <div class="category">
+                <div class="category-img">
+                    <img src="img/cat-non-veg.jpg" alt="Non-veg">
+                </div>
+                <p class="category-name">Non-Veg</p>
+            </div>
+            <div class="category">
+                <div class="category-img">
+                    <img src="img/cat-thali.jpg" alt="Thali">
+                </div>
+                <p class="category-name">Thali</p>
+            </div>
+            <div class="category">
+                <div class="category-img">
+                    <img src="img/cat-desert.jpg" alt="Dessert">
+                </div>
+                <p class="category-name">Dessert</p>
+            </div>
+            <div class="category">
+                <div class="category-img">
+                    <img src="img/cat-drink.jpg" alt="Drinks">
+                </div>
+                <p class="category-name">Drinks</p>
+            </div>
+            </div>
+              <!-- Add more categories here -->
+            </div>
+            
+</div>
+
+        </section>
+
+    
+        <div class="restaurants-container">
+
+            <!-- 1 -->
+            <div class="restaurant">
+                <p class="discount">50% off</p>
+                <div class="restaurant-thumbnail">
+                    <img src="img/restaurant-1.jpg" class="restaurant-img">
+                </div>
+                <div class="restaurant-body">
+                    <h3 class="restaurant-name">Flavour Fusion</h3>
+                    <p class="menu">Pasta,Pizza,Sandwich,Burger</p>
+                    <p class="place">FC road</p>
+                    <span class="rating">4.2<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="restaurant">
+                <!-- <p class="discount">50% off</p> -->
+                <div class="restaurant-thumbnail">
+                    <img src="img/restaurant-2.jpg" class="restaurant-img">
+                </div>
+                <div class="restaurant-body">
+                    <h3 class="restaurant-name">Royal rasoi</h3>
+                    <p class="menu">Paneer,thali,desert</p>
+                    <p class="place">Hitech City</p>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="restaurant">
+                <p class="discount">50% off</p>
+                <div class="restaurant-thumbnail">
+                    <img src="img/restaurant-3.jpg" class="restaurant-img">
+                </div>
+                <div class="restaurant-body">
+                    <h3 class="restaurant-name">Golden Chopsticks</h3>
+                    <p class="menu">Noodles,manchurian</p>
+                    <p class="place">Tollichoki</p>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <!-- 4 -->
+            <div class="restaurant">
+                <p class="discount">50% off</p>
+                <div class="restaurant-thumbnail">
+                    <img src="img/restaurant-4.jpg" class="restaurant-img">
+                </div>
+                <div class="restaurant-body">
+                    <h3 class="restaurant-name">Biryani Bliss</h3>
+                    <p class="menu">Biryani,chicken,mutton</p>
+                    <p class="place">Charminar</p>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <!-- 5 -->
+            <div class="restaurant">
+                <!-- <p class="discount">50% off</p> -->
+                <div class="restaurant-thumbnail">
+                    <img src="img/restaurant-5.jpg" class="restaurant-img">
+                </div>
+                <div class="restaurant-body">
+                    <h3 class="restaurant-name">Taste Temptation</h3>
+                    <p class="menu">Chinese,thali,biryani</p>
+                    <p class="place">Manikonda</p>
+                    <span class="rating">4.1<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <!-- 6 -->
+            <div class="restaurant">
+                <!-- <p class="discount">50% off</p> -->
+                <div class="restaurant-thumbnail">
+                    <img src="img/restaurant-6.jpg" class="restaurant-img">
+                </div>
+                <div class="restaurant-body">
+                    <h3 class="restaurant-name">Bite Bistro</h3>
+                    <p class="menu">Burgers,pasta,drinks</p>
+                    <p class="place">Gachibowli</p>
+                    <span class="rating">3.9<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+
+</body>
+   
+</html>

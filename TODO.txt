@@ -1,0 +1,3 @@
+
+Static Folder
+# TODO Create static folder to keep all js and css files.

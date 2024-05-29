@@ -13,8 +13,9 @@ def user_login(request: HttpRequest):
         password = request.POST['password']
         user = authenticate(request, email=email , password=password)
         if user is not None:
-            messages.success(request , 'Login Successful')
-            return render(request, 'accounts/user_login_page.html')
+            # messages.success(request , 'Login Successful')
+            return redirect('dashboard')
+            # return render(request, 'accounts/user_login_page.html')
         else:
             messages.error(request, 'Incorrect Username or Password')
             return render(request , 'accounts/user_login_page.html')
