@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     {% comment %} <link rel="stylesheet" href="hero.css"> <!-- #TODO [] Update this to include url --> {% endcomment %}
-    <link rel="stylesheet" href="{% static "dashboard/css/hero.css" %}">
+    <link rel="stylesheet" href="{% static "dashboard/css/hero.css" %}" type='text/css'>
 
 </head>
 
@@ -22,7 +22,7 @@
         <nav class="navbar">
 
             <!-- logo -->
-            <!-- <img src="img/logo.png" class="logo" alt="Error Loading Image"> -->
+            <!-- <img src="/static/img/logo.png" class="logo" alt="Error Loading Image"> -->
             <!-- <h1>HI</h1> -->
 
             <!-- ul -->
@@ -78,10 +78,11 @@
                     <div class="elipse"></div>
                     <div class="elipse"></div>
                 </div>
+                {% static "/dashboard/img" %}
                 <div class="foreground-elements">
-                    <img src="img/hero-biryani.png" class="hero-img" alt="Error loading Image">
-                    <img src="img/hero-burger.png" class="hero-img" alt="Error loading Image">
-                    <img src="img/hero-pizza.png" class="hero-img" alt="Error loading Image">
+                    <img src="/static/img/hero-biryani.png" class="hero-img" alt="Error loading Image">
+                    <img src="/static/img/hero-burger.png" class="hero-img" alt="Error loading Image">
+                    <img src="/static/img/hero-pizza.png" class="hero-img" alt="Error loading Image">
 
                 </div>
             </div>
@@ -113,13 +114,13 @@
                 </div>
 
                 <div>
-                    <img src="img/food-1.png" class="food-img">
-                    <img src="img/food-2.png" class="food-img">
-                    <img src="img/food-3.png" class="food-img">
-                    <img src="img/food-4.png" class="food-img">
-                    <img src="img/food-5'.png" class="food-img">
-                    <img src="img/food-6.png" class="food-img">                    
-                    <img src="img/food-7.png" class="food-img">                    
+                    <img src="/static/img/food-1.png" class="food-img">
+                    <img src="/static/img/food-2.png" class="food-img">
+                    <img src="/static/img/food-3.png" class="food-img">
+                    <img src="/static/img/food-4.png" class="food-img">
+                    <img src="/static/img/food-5'.png" class="food-img">
+                    <img src="/static/img/food-6.png" class="food-img">                    
+                    <img src="/static/img/food-7.png" class="food-img">                    
 
                 </div>
 
@@ -141,43 +142,43 @@
                 <div class="food-categories">
             <div class="category">
                 <div class="category-img">
-                    <img src="img/cat-pizza.jpg" alt="Pizza">
+                    <img src="/static/img/cat-pizza.jpg" alt="Pizza">
                 </div>
                 <p class="category-name">Pizza</p>
             </div>
             <div class="category">
                 <div class="category-img">
-                    <img src="img/cat-burger.jpg" alt="Burger">
+                    <img src="/static/img/cat-burger.jpg" alt="Burger">
                 </div>
                 <p class="category-name">Burgers</p>
             </div>
             <div class="category">
                 <div class="category-img">
-                    <img src="img/cat-biryani.jpg" alt="Biryani">
+                    <img src="/static/img/cat-biryani.jpg" alt="Biryani">
                 </div>
                 <p class="category-name">Biryani</p>
             </div>
             <div class="category">
                 <div class="category-img">
-                    <img src="img/cat-non-veg.jpg" alt="Non-veg">
+                    <img src="/static/img/cat-non-veg.jpg" alt="Non-veg">
                 </div>
                 <p class="category-name">Non-Veg</p>
             </div>
             <div class="category">
                 <div class="category-img">
-                    <img src="img/cat-thali.jpg" alt="Thali">
+                    <img src="/static/img/cat-thali.jpg" alt="Thali">
                 </div>
                 <p class="category-name">Thali</p>
             </div>
             <div class="category">
                 <div class="category-img">
-                    <img src="img/cat-desert.jpg" alt="Dessert">
+                    <img src="/static/img/cat-desert.jpg" alt="Dessert">
                 </div>
                 <p class="category-name">Dessert</p>
             </div>
             <div class="category">
                 <div class="category-img">
-                    <img src="img/cat-drink.jpg" alt="Drinks">
+                    <img src="/static/img/cat-drink.jpg" alt="Drinks">
                 </div>
                 <p class="category-name">Drinks</p>
             </div>
@@ -196,7 +197,7 @@
             <div class="restaurant">
                 <p class="discount">50% off</p>
                 <div class="restaurant-thumbnail">
-                    <img src="img/restaurant-1.jpg" class="restaurant-img">
+                    <img src="/static/img/restaurant-1.jpg" class="restaurant-img">
                 </div>
                 <div class="restaurant-body">
                     <h3 class="restaurant-name">Flavour Fusion</h3>
@@ -209,7 +210,7 @@
             <div class="restaurant">
                 <!-- <p class="discount">50% off</p> -->
                 <div class="restaurant-thumbnail">
-                    <img src="img/restaurant-2.jpg" class="restaurant-img">
+                    <img src="/static/img/restaurant-2.jpg" class="restaurant-img">
                 </div>
                 <div class="restaurant-body">
                     <h3 class="restaurant-name">Royal rasoi</h3>
@@ -222,7 +223,7 @@
             <div class="restaurant">
                 <p class="discount">50% off</p>
                 <div class="restaurant-thumbnail">
-                    <img src="img/restaurant-3.jpg" class="restaurant-img">
+                    <img src="/static/img/restaurant-3.jpg" class="restaurant-img">
                 </div>
                 <div class="restaurant-body">
                     <h3 class="restaurant-name">Golden Chopsticks</h3>
@@ -235,7 +236,7 @@
             <div class="restaurant">
                 <p class="discount">50% off</p>
                 <div class="restaurant-thumbnail">
-                    <img src="img/restaurant-4.jpg" class="restaurant-img">
+                    <img src="/static/img/restaurant-4.jpg" class="restaurant-img">
                 </div>
                 <div class="restaurant-body">
                     <h3 class="restaurant-name">Biryani Bliss</h3>
@@ -248,7 +249,7 @@
             <div class="restaurant">
                 <!-- <p class="discount">50% off</p> -->
                 <div class="restaurant-thumbnail">
-                    <img src="img/restaurant-5.jpg" class="restaurant-img">
+                    <img src="/static/img/restaurant-5.jpg" class="restaurant-img">
                 </div>
                 <div class="restaurant-body">
                     <h3 class="restaurant-name">Taste Temptation</h3>
@@ -261,7 +262,7 @@
             <div class="restaurant">
                 <!-- <p class="discount">50% off</p> -->
                 <div class="restaurant-thumbnail">
-                    <img src="img/restaurant-6.jpg" class="restaurant-img">
+                    <img src="/static/img/restaurant-6.jpg" class="restaurant-img">
                 </div>
                 <div class="restaurant-body">
                     <h3 class="restaurant-name">Bite Bistro</h3>
