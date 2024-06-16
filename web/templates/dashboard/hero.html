@@ -27,13 +27,13 @@
 
             <!-- ul -->
             <ul class="links-container">
-                <li class="link-items"><a href="#" class="links">Login</a></li>
-                <li class="link-items"><a href="#" class="links">Menu</a></li>
-                <li class="link-items"><a href="#" class="links">Restaurants</a></li>
+                <li class="link-items"><a href="{% url "user_login" %}" class="links">Login</a></li>
+                {% comment %} <li class="link-items"><a href="#" class="links">Menu</a></li> {% endcomment %}
+                <li class="link-items"><a href="{% url 'restro_signup' %}" class="links">Restaurants</a></li>
                 <li class="link-items"><a href="#" class="links">Track Order</a></li>
                 <li class="link-items"><a href="#" class="links">Order</a></li>
-                <li class="link-items"><a href="#" class="links">Contact Us</a></li>
-                <li class="link-items"><a href="#" class="links">About Us</a></li>
+                {% comment %} <li class="link-items"><a href="#" class="links">Contact Us</a></li> {% endcomment %}
+                {% comment %} <li class="link-items"><a href="#" class="links">About Us</a></li> {% endcomment %}
             </ul>
             
 
@@ -57,16 +57,17 @@
                 <h1 class="hero-heading">Eat the best</h1>
                 <p class="hero-line">Explore and understand the culture more by tasting the amazing dishes of that culture</p>
                 
-                <div class="search location">
+                {% comment %} <div class="search location">
                     <input type="text" class="search-box" placeholder="Search Restaurants,Cuisine...">
                     <button class="search-btn locate-btn"><i class="fa-solid fa-location-crosshairs"></i></button>
-                </div>
-
+                </div> {% endcomment %}
+                
+                {% comment %} 
                 <div class="hero-action-btn-container">
                     <button class="btn">Order Food</button>
                     <p class="or">OR</p>
                     <button class="btn transparent">Make reservation</button>
-                </div>
+                </div> {% endcomment %}
             
             </div>
 

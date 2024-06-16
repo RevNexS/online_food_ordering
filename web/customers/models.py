@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.contrib.auth.backends import ModelBackend
 from django.http import HttpRequest
 
+"""
 # Create your models here.
 # class Customers(models.Model):
 #     first_name = models.CharField(max_length=100)
@@ -14,7 +15,7 @@ from django.http import HttpRequest
 
 #     def __str__(self):
 #         return "".format(self.first_name, self.last_name)
-
+"""
 
 class Address(models.Model):
     street_address = models.CharField(max_length=200)
@@ -75,8 +76,6 @@ class CustomerUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-
-# FIXME [] Email is not unique. two user can have same email.    
 
 class CustomerUserBackend(ModelBackend):
     def authenticate(self, request, email=None, password=None, **kwargs):

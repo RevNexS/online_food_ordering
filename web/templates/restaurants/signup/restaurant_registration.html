@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>Restaurant Registration</title>
     <link rel="stylesheet" href="style.css">
     
     <style>
@@ -84,26 +84,24 @@
     margin: 20px auto 0; 
     display: block; 
 }
-       .Signup-link {
+       .register-link {
             text-align: center;
             font-size: 14.5px;
             margin-top: 20px;
-            text-decoration: none;
         }
 
-        .login-link a {
+        .register-link a {
             text-decoration: none;
             font-weight: 600;
             color: orangered;
-            text-decoration: none;
         }
 
-        .login-link a:hover {
+        .register-link a:hover {
             text-decoration: underline;
         }
 
        
-        @media (min-width: 5000px) {
+        @media (min-width: 768px) {
             .input-box {
                 flex: 1; 
             }
@@ -123,7 +121,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <h1>User Login</h1>
+        <h1>Restaurant Register</h1>
         {% if messages %}
         {% for message in messages %}
 
@@ -139,33 +137,82 @@
         
         {% endfor %}
         {% endif %}
-        
-        <form action='' method='POST' id="registrationForm" onsubmit="return validateForm()">
+
+        <form id="registrationForm" action='' method="POST" onsubmit="return validateForm()" enctype="multipart/form-data">
             {% csrf_token %}
+
+            <div class="section">
+                <div class="input-box">
+                    <label for="restaurant-name">Restaurant Name:</label>
+                    <input type="text" id="restaurant-name" name="restaurant-name" required>
+                </div>
+                {% comment %} <div class="input-box">
+                    <label for="owner-name">Owner Name:</label>
+                    <input type="text" id="owner-name" name="owner-name" required>
+                </div> {% endcomment %}
+            </div>
+
             <div class="section">
                 <div class="input-box">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-
                 <div class="input-box">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required minlength="8">
                 </div>
             </div>
 
-            <button type="submit" class="btn">Login</button>
+            <div class="section">
+                <div class="input-box">
+                    <label for="contact-number">Contact Number:</label>
+                    <input type="text" id="contact-number" name="contact-number" required pattern="[0-9]{10}">
+                </div>
+                <div class="input-box street">
+                    <label for="street">Street:</label>
+                    <input type="text" id="street" name="street" required>
+                </div>
+            </div>
 
-            <div class="Signup-link">
-                <p>Create an Account? <a href="{% url 'signup' %}">Sign Up</a></p>
+            <div class="section">
+                <div class="input-box">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="input-box">
+                    <label for="pin-code">Pin Code:</label>
+                    <input type="text" id="pin-code" name="pin-code" required pattern="[0-9]{6}">
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="input-box">
+                    <input type="file" id="image1" name="image1">
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+
+            <div class="register-link">
+                <p>Already have an account? <a href="{% url 'restro_login' %}">Login</a></p>
             </div>
         </form>
     </div>
 
     <script>
         function validateForm() {
-            var form = document.getElementById('loginForm');
+            var form = document.getElementById('registrationForm');
             var isValid = true;
+
+            var pinCodeInput = form.querySelector('#pin-code');
+            var pinCodePattern = /^[0-9]{6}$/;
+            if (!pinCodePattern.test(pinCodeInput.value)) {
+                isValid = false;
+                pinCodeInput.classList.add('invalid');
+            } else {
+                pinCodeInput.classList.remove('invalid');
+            }
+
             var emailInput = form.querySelector('#email');
             if (!emailInput.checkValidity()) {
                 isValid = false;
@@ -173,6 +220,16 @@
             } else {
                 emailInput.classList.remove('invalid');
             }
+
+            var phoneNumberInput = form.querySelector('#contact-number');
+            var phoneNumberPattern = /^[0-9]{10}$/;
+            if (!phoneNumberPattern.test(phoneNumberInput.value)) {
+                isValid = false;
+                phoneNumberInput.classList.add('invalid');
+            } else {
+                phoneNumberInput.classList.remove('invalid');
+            }
+
             return isValid;
         }
     </script>

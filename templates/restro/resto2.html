@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 20px;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .restaurant-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            gap: 10px;
+            padding: 10px 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .restaurant-images img {
+            width: auto;
+            height: 200px; /* Set a fixed height */
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.5s ease;
+            cursor: pointer; /* Add cursor pointer */
+        }
+
+        .restaurant-images img:hover {
+            transform: scale(1.1); /* Enlarge image on hover */
+        }
+
+        .restaurant-images .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .restaurant-images .arrow.right {
+            right: 10px;
+        }
+
+        h1 {
+            margin: 10px 0;
+        }
+
+        .status {
+            color: green;
+        }
+
+        .rating span {
+            display: inline-block;
+            margin: 5px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #343a40;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        /* Additional styles for the enlarged images */
+        .enlarged-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .enlarged-image img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .menu_row {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .box {
+    width: calc(25% - 20px); /* Adjusted width to fit 4 items per row */
+    margin: 0 7.5px 15px; /* Adjusted margin */
+}
+	
+	.box img {
+    width: 100%;
+    height: auto; /* Allow images to adjust height based on width */
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.box:hover img {
+    transform: scale(1.05); /* Enlarge image on hover */
+}
+	
+        .image img {
+            width: 100%;
+	    height:auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .dish-name {
+            margin-top: 10px;
+        }
+
+        .dish-name,
+        h4 {
+            margin: 5px 0;
+        }
+
+        .add-to-cart {
+            background-color: #f05a5b;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-to-cart:hover {
+            background-color: #e04a4a;
+        }
+        .form-container {
+            width: 90%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            background-color: #f05a5b;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-container input[type="file"] {
+            margin-bottom: 15px;
+        }
+
+        .form-container .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-container button {
+            background-color: #f05a5b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            width: auto;
+        }
+
+        .form-container button:hover {
+            background-color: #e04a4a;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="restaurant-images">
+            <img src="C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent1.jpg" alt="Restaurant Image 1" onclick="enlargeImage(this)">
+            <img src="C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent2.jpg" alt="Restaurant Image 2" onclick="enlargeImage(this)">
+            <img src="C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent3.jpg" alt="Restaurant Image 3" onclick="enlargeImage(this)">
+            <button class="arrow right" onclick="nextImage()">&#9654;</button>
+        </div>
+        <h1>P.F. Chang's</h1>
+        <p>Asian, Sushi, Desserts</p>
+        <p>Lower Parel, Mumbai</p>
+        <p class="status">Open now - 12noon – 1am (Today)</p>
+        <div class="rating">
+            <span>4.2⭐</span>
+            <span>357 Dining Ratings</span>
+        </div>
+    </header>
+    <nav>
+        <a href="#overview">Overview</a>
+        <a href="#recieve">Ordered Recieved</a>
+        <a href="#photos" onclick="showPhotos()" >Photos</a>
+	<a href="#upload" onclick="showForm()">Upload images</a>
+        <a href="#menu" onclick="showMenu()">Menu</a>
+	
+    </nav>
+  
+    <div class="enlarged-image" id="enlarged-image-container">
+        <img src="" alt="Enlarged Image" id="enlarged-image">
+    </div>
+
+    <section id="form-section"></section>
+
+    <script>
+        function showMenu() {
+            const menuHtml = `
+                <div class="menu_row">
+                    <div class="box">
+                        <div class="image" onmouseover="highlightItem(this)" onmouseout="unhighlightItem(this)">
+                            <img src="images/paneer tikka.jpg" alt="Error">
+                        </div>
+                        <div>
+                            <h3 class="dish-name">Paneer tikka</h3>
+                            <h4>140rs</h4>
+                            <button class="add-to-cart">Add +</button>
+			                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="image" onmouseover="highlightItem(this)" onmouseout="unhighlightItem(this)">
+                            <img src="images/paneer masala.jpg" alt="Error">
+                        </div>
+                        <div>
+                            <h3 class="dish-name">Paneer masala</h3>
+                            <h4>150rs</h4>
+                            <button class="add-to-cart">Add +</button>
+                        </div>
+                    </div>
+                    <!-- Add more menu items here -->
+                    <div class="box">
+                        <div class="image" onmouseover="highlightItem(this)" onmouseout="unhighlightItem(this)">
+                            <img src="images/tawa panner.jpg" alt="Error">
+                        </div>
+                        <div>
+                            <h3 class="dish-name">Tawa panner</h3>
+                            <h4>160rs</h4>
+                            <button class="add-to-cart">Add +</button>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="image" onmouseover="highlightItem(this)" onmouseout="unhighlightItem(this)">
+                            <img src="images/veg maratha.jpg" alt="Error">
+                        </div>
+                        <div>
+                            <h3 class="dish-name">Veg maratha</h3>
+                            <h4>140rs</h4>
+                            <button class="add-to-cart">Add +</button>
+                        </div>
+                    </div>
+                    <!-- Additional menu items -->
+                    <div class="box">
+                        <div class="image" onmouseover="highlightItem(this)" onmouseout="unhighlightItem(this)">
+                            <img src="images/daal tadaka.jpg" alt="Error">
+                        </div>
+                        <div>
+                            <h3 class="dish-name">Daal tadaka</h3>
+                            <h4>130rs</h4>
+                            <button class="add-to-cart">Add +</button>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="image" onmouseover="highlightItem(this)" onmouseout="unhighlightItem(this)">
+                            <img src="images/dal makhani.jpg" alt="Error">
+                        </div>
+                        <div>
+                            <h3 class="dish-name">Daal makhani</h3>
+                            <h4>140rs</h4>
+                            <button class="add-to-cart">Add +</button>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="image" onmouseover="highlightItem(this)" onmouseout="unhighlightItem(this)">
+                            <img src="images/bhindi masala.jpg" alt="Error">
+                        </div>
+                        <div>
+                            <h3 class="dish-name">Bhindi masala</h3>
+                            <h4>120rs</h4>
+                            <button class="add-to-cart">Add +</button>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="image" onmouseover="highlightItem(this)" onmouseout="unhighlightItem(this)">
+                            <img src="images/maharasthrian thali.jpg" alt="Error">
+                        </div>
+                        <div>
+                            <h3 class="dish-name">Maharasthrian thali</h3>
+                            <h4>330rs</h4>
+                            <button class="add-to-cart">Add +</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('form-section').innerHTML = menuHtml;
+        }
+        
+        function enlargeImage(image) {
+            const enlargedImageContainer = document.getElementById('enlarged-image-container');
+            const enlargedImage = document.getElementById('enlarged-image');
+            enlargedImage.src = image.src;
+            enlargedImageContainer.style.display = 'flex';
+        }
+
+        // Close enlarged image when clicked outside
+        window.addEventListener('click', function(event) {
+            const enlargedImageContainer = document.getElementById('enlarged-image-container');
+            if (event.target == enlargedImageContainer) {
+                enlargedImageContainer.style.display = 'none';
+            }
+        });
+
+        // Define nextImage() function and other necessary functions here
+	
+        let currentImageIndex = 0;
+        const mainImages = document.querySelectorAll('.restaurant-images img');
+        const images = [
+            "C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent1.jpg",
+            "C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent2.jpg",
+            "C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent3.jpg",
+            "C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent4.jpg"
+        ];
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            mainImages.forEach((img, index) => {
+                img.src = images[(currentImageIndex + index) % images.length];
+            });
+        }
+
+        // Define showForm() function here
+       function showForm() {
+            const formHtml = `
+                <div class="form-container">
+                    <h2>Update Food Image</h2>
+                    <form>
+                        <label for="image1">Select 1st Image</label>
+                        <input type="file" id="image1" name="image1">
+                        
+                        <label for="image2">Select 2nd Image</label>
+                        <input type="file" id="image2" name="image2">
+                        
+                        <label for="image3">Select 3rd Image</label>
+                        <input type="file" id="image3" name="image3">
+                        
+                        <div class="button-container">
+                            <button type="submit">Update Image</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            document.getElementById('form-section').innerHTML = formHtml;
+        }
+	function showPhotos() {
+    const images = [
+        "C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent1.jpg",
+        "C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent2.jpg",
+        "C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent2.jpg",
+        "C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent2.jpg",
+        "C:/Users/Dhanalakshmi/OneDrive/Desktop/214g/Infosys Project/restaurent2.jpg",
+        "images/restaurant_image6.jpg",
+        "images/restaurant_image7.jpg",
+        "images/restaurant_image8.jpg",
+        "images/restaurant_image9.jpg",
+        "images/restaurant_image10.jpg",
+        // Add more image paths as needed
+    ];
+
+    let html = '<div class="menu_row">';
+    images.forEach((image, index) => {
+        // Add image to HTML
+        html += `
+            <div class="box">
+                <img src="${image}" alt="Restaurant Image ${index + 1}" style="border-radius: 2px;
+                padding: 20px;
+                width: 250px;
+                height:250px;">
+            </div>
+        `;
+        // Break to new row every 5 images
+        if ((index + 1) % 4 === 0 && index !== images.length - 1) {
+            html += '</div><div class="menu_row">';
+        }
+    });
+    html += '</div>';
+
+    // Display images
+    document.getElementById('form-section').innerHTML = html;
+}
+
+
+    </script>
+</body>
+</html>
+
+
